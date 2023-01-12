@@ -23,10 +23,10 @@ export default {
     BOLD: 'Nunito_700Bold'
   },
   FONT_SIZE: {
-    S: 12,
-    M: 14,
-    L: 16,
-    XS: 24,
-    XL: 32
+    BODY_XS: 12,
+    BODY_S  : 14,
+    BODY_M: 16,
+    TITLE_M: 24,
+    TITLE_G: 32
   }
 };
