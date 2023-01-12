@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
-import { Container, Title } from './styles';
+import { Container } from './styles';
 
 export function Home() {
   return (
-    <Container>
-      <Title>Daily Diet</Title>
+    <Container>      
       <StatusBar style="auto" />
     </Container>
   );
