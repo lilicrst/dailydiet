@@ -19,8 +19,8 @@ export default {
     GRAY_7: '#FAFAFA'
   },
   FONT_FAMILY: {
-    REGULAR: 'Nunito_400Regular',
-    BOLD: 'Nunito_700Bold'
+    REGULAR: 'NunitoSans_400Regular',
+    BOLD: 'NunitoSans_700Bold'
   },
   FONT_SIZE: {
     BODY_XS: 12,
