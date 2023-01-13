@@ -1,4 +1,5 @@
-import styled from "styled-components/native";
+import styled, {css} from "styled-components/native";
+import { Plus } from 'phosphor-react-native';
 
 export const Container = styled.View`
   width: 100%;
@@ -6,4 +7,22 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.COLORS.GRAY_2};
 
   border-radius: 6px;
+  padding: 16px 24px;
+
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
 `;
+
+export const Title = styled.Text`
+  ${({ theme }) => css`
+    font-size: ${theme.FONT_SIZE.BODY_M}px;
+    color: ${theme.COLORS.WHITE};
+    font-family: ${theme.FONT_FAMILY.BOLD};
+`}`;
+
+export const Icon = styled(Plus).attrs(({ theme }) => ({
+  color: theme.COLORS.WHITE,
+  size: 18,
+}))``;
