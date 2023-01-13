@@ -1,17 +1,11 @@
-import { Container, Percentage, Subtitle, Icon, Label } from "./styles";
+import { GeneralStatistics } from "@components/GeneralStatistics";
+import { Container, Icon } from "./styles";
 
 export function PercentageChart() {
   return (
     <Container>
       <Icon />
-      <Label>
-        <Percentage>
-          90,86%
-        </Percentage>
-        <Subtitle>
-          das refeições dentro da dieta
-        </Subtitle>
-      </Label>
+      <GeneralStatistics percentage="63,8%" />
     </Container>
   )
 }
