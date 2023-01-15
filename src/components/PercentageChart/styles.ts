@@ -13,6 +13,7 @@ export const Container = styled(TouchableOpacity)`
   padding: 24px;
 
   margin-top: 33px;
+  margin-bottom: 40px;
 `;
 
 export const Icon = styled(ArrowUpRight).attrs(({ theme }) => ({

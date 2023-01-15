@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Container } from './styles';
+import { Container, Text } from './styles';
 
 import { Header } from '@components/Header';
 import { PercentageChart } from '@components/PercentageChart';
@@ -11,6 +11,9 @@ export function Home() {
       <StatusBar style="auto" />
       <Header />
       <PercentageChart />
+      <Text>
+        Refeições
+      </Text>      
       <ButtonIcon />
     </Container>
   );

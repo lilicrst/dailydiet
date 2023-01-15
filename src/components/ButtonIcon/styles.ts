@@ -12,7 +12,6 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
 `;
 
 export const Title = styled.Text`
