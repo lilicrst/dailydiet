@@ -8,6 +8,8 @@ export function DailyList(){
         15.01.23
       </Date>
       <MealTicket />
+      <MealTicket />
+      <MealTicket />
     </Container>
   );
 }
