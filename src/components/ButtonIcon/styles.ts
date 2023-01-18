@@ -24,4 +24,6 @@ export const Title = styled.Text`
 export const Icon = styled(Plus).attrs(({ theme }) => ({
   color: theme.COLORS.WHITE,
   size: 18,
-}))``;
+}))`
+  margin-right: 12px;
+`;

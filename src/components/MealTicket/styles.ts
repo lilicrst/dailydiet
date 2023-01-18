@@ -1,3 +1,4 @@
+import theme from "src/theme";
 import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
@@ -13,7 +14,7 @@ export const Container = styled.View`
   border-width: 1px;
   border-radius: 6px;
 
-  gap: 12px;
+  margin-bottom: 8px; //tirar do ultimo
 `;
 
 export const Hour = styled.Text`
@@ -24,15 +25,30 @@ export const Hour = styled.Text`
   `}`;
 
 export const Meal = styled.Text`
+  flex: 1;
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.BODY_M}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
     color: ${theme.COLORS.GRAY_2};
-  `}`;
+  `}  
+`;
 
 export const Divider = styled.View`
-  width: 0px;
+  width: 1px;
   height: 14px;
 
-  border: 1px solid;
+  margin-left: 12px;
+  margin-right: 12px;
+
+  background-color: ${({ theme }) => theme.COLORS.GRAY_4};
+`;
+
+export const Status = styled.View`
+  width: 14px;
+  height: 14px;
+
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.COLORS.GREEN_MID};
+
+  justify-self: last baseline;
 `;

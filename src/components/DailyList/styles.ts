@@ -6,6 +6,8 @@ export const Container = styled.View`
 `;
 
 export const Date = styled.Text`
+  margin-bottom: 8px;
+  
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.TITLE_S}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
