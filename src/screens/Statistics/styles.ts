@@ -32,3 +32,9 @@ export const Title = styled.Text`
   margin-top: 17px;  
   margin-bottom: 23px;
 `;
+
+export const Column = styled.View`
+  flex-direction: row;
+  align-self: stretch;
+  justify-content: space-between;
+`;

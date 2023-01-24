@@ -5,7 +5,7 @@ type Props = {
   description: string;
 }
 
-export function DetailsCard({ number, description }: Props) {
+export function DetailsMiniCard({ number, description }: Props) {
   return (
     <Container>
       <Number>
