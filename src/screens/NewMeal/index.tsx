@@ -1,6 +1,7 @@
 import { BackButton } from "@components/BackButton";
+import { Button } from "@components/Button";
 import { HeaderTitle } from "@components/HeaderTitle";
-import { Container, Label, SlidingScreen } from "./styles";
+import { Container, Input, Label, SlidingScreen } from "./styles";
 
 export function NewMeal() {
   return (
@@ -11,6 +12,7 @@ export function NewMeal() {
         <Label>
           Nome
         </Label>
+        <Button title="Cadastrar refeição" />
       </SlidingScreen>
     </Container>
   );

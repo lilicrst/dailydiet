@@ -15,7 +15,7 @@ export function Home() {
       <Text>
         Refeições
       </Text>      
-      <ButtonIcon />
+      <ButtonIcon title='Nova refeição' />
       <DailyList date='15.01.23' />
       <DailyList date='18.01.23' />
     </Container>
