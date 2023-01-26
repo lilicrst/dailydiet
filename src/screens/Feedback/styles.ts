@@ -1,5 +1,11 @@
 import styled, { css } from "styled-components/native";
 
+export type ScreenStatusStyleProps = 'POSITIVE' | 'NEGATIVE';
+
+type Props = {
+  type: ScreenStatusStyleProps;
+}
+
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.COLORS.GRAY_7};
@@ -9,11 +15,11 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const Title = styled.Text`
-  ${({ theme }) => css`
+export const Title = styled.Text <Props>`
+  ${({ theme, type }) => css`
     font-size: ${theme.FONT_SIZE.TITLE_M}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
-    color: ${theme.COLORS.GREEN_DARK};
+    color: ${ type === 'POSITIVE' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
   `}
   margin-bottom:8px;
 `;
@@ -24,6 +30,7 @@ export const Subtitle = styled.Text`
     font-family: ${theme.FONT_FAMILY.REGULAR};
     color: ${theme.COLORS.GRAY_1};
   `}
+  text-align: center;  
 `;
 
 export const Ilustration = styled.Image`

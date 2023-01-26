@@ -1,15 +1,57 @@
-import { Container, Ilustration, Subtitle, Title } from "./styles";
+import { ScreenStatusStyleProps, Container, Ilustration, Subtitle, Title } from "./styles";
 
-import PositiveImg from '@assets/positive.png'
 import { Button } from "@components/Button";
 
-export function Feedback(){
+import PositiveImg from '@assets/positive.png'
+import NegativeImg from '@assets/negative.png'
+
+type Props = {
+  type: ScreenStatusStyleProps;
+}
+
+export function Feedback({ type }: Props){
+
+  function TitleByStatus({type}: Props){
+    if (type === 'POSITIVE') {
+      return ("Continue assim!")
+    } else {
+      return ("Que pena!")
+    }
+  }
+
+  function SubitleByStatus({type}: Props){
+    if (type === 'POSITIVE') {
+      return ("Você continua dentro da dieta. Muito bem!")
+    } else {
+      return ("Você saiu da dieta dessa vez, mas continue se esforçando e não desista!")
+    }
+  }
+
+  function ImgByStatus({type}: Props){
+    if (type === 'POSITIVE') {
+      return ({PositiveImg})
+    } else {
+      return ({NegativeImg})
+    }
+  }
+
   return (
     <Container>
-      <Title>Continue assim!</Title>
-      <Subtitle>Você continua dentro da dieta. Muito bem!</Subtitle>
-      <Ilustration source={PositiveImg} />
-      <Button title="Ir para a página inicial"/>
+      <Title type={type}>
+        {TitleByStatus({type})}
+      </Title>
+      <Subtitle>
+        {SubitleByStatus({type})}
+      </Subtitle>
+
+      <Ilustration 
+        source={type === 'POSITIVE' ? PositiveImg : NegativeImg}
+      />
+
+      <Button 
+        title="Ir para a página inicial"
+        type="SMALLER"
+      />
     </Container>
   )
 }

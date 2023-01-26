@@ -21,7 +21,7 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-      {fontsLoaded ? <Feedback /> : <Loading /> }
+      {fontsLoaded ? <Feedback type='NEGATIVE' /> : <Loading /> }
     </ThemeProvider>
   );
 }
