@@ -33,9 +33,11 @@ export const Title = styled.Text <Props>`
 `;
 
 export const Icon = styled(Plus).attrs(({ theme }) => ({
-  color: theme.COLORS.WHITE,
+  color: theme.COLORS.GRAY_4,
   size: 18,
+  weight: 'bold',
 }))<Props>`
   margin-right: 12px;
-  //color: ${({ theme, type }) => type === 'PRIMARY' ? theme.COLORS.WHITE : theme.COLORS.GRAY_1};
 `;
+
+//https://app.rocketseat.com.br/h/forum/react-native/421811c8-910e-4a8d-9c5d-fd49990039e1

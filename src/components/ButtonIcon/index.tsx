@@ -12,7 +12,7 @@ export function ButtonIcon({ title, type = 'PRIMARY', ...rest }: Props){
       type={type}
       {...rest}
     >
-      <Icon type={type} />
+      <Icon type='PRIMARY' />
       <Title type={type}>
         {title}
       </Title>

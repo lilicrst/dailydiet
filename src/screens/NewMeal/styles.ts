@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components/native";
-import { TextInput } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -34,27 +33,11 @@ export const Label = styled.Text`
   margin-bottom: 4px;
 `;
 
-
-export const Input = styled(TextInput)`
-  flex: 1;
-
-  min-height: 48px;
-  max-width: 48px;
-
-  ${({ theme }) => css`
-    font-size: ${theme.FONT_SIZE.BODY_M}px;
-    font-family: ${theme.FONT_FAMILY.REGULAR};
-    color: ${theme.COLORS.GRAY_1};
-    border-color: ${theme.COLORS.GRAY_5};
-  `}
-
-  border-radius: 6px;
-  border: solid 1px;
-
-`;
+export const Binded = styled.View``;
 
 export const Column = styled.View`
+  height: 94px;
   flex-direction: row;
-  align-self: stretch;
-  justify-content: space-between;
+  display: flex;
+  column-gap: 12px;  
 `;
