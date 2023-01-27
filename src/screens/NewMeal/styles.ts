@@ -31,13 +31,16 @@ export const Label = styled.Text`
     color: ${theme.COLORS.GRAY_2};
   `}
   margin-bottom: 4px;
+  flex: auto;
 `;
 
 export const Binded = styled.View``;
 
 export const Column = styled.View`
-  height: 94px;
+  flex: 1;
   flex-direction: row;
-  display: flex;
+  height: 94px;
+  flex-wrap: wrap;
+  align-content: flex-start;
   column-gap: 12px;  
 `;

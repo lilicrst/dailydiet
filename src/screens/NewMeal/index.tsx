@@ -25,6 +25,7 @@ export function NewMeal() {
             <Label>Hora</Label>
             <Input type='DATEHOUR' />
           </Binded>                            
+
         </Column>
 
         <Label>Está dentro da dieta?</Label>
