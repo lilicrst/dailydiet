@@ -3,7 +3,7 @@ import { Container, Divider, Hour, Meal, Status } from "./styles";
 type Props = {
   hour: string;
   meal: string;
-  status?: true;
+  status?: boolean;
 }
 
 export function MealTicket({ hour, meal, status}: Props){

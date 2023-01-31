@@ -14,3 +14,14 @@ export const Text = styled.Text`
   `}
   margin-bottom:8px;
 `;
+
+export const DateList = styled.Text`
+  margin-top: 32px;
+  margin-bottom: 8px;
+  
+  ${({ theme }) => css`
+    font-size: ${theme.FONT_SIZE.TITLE_S}px;
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    color: ${theme.COLORS.GRAY_1};
+  `}
+`;
