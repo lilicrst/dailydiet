@@ -1,13 +1,22 @@
-import styled, {css} from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { TouchableOpacity } from "react-native";
 
 export type ButtonTypeStyleProps = 'YES' | 'NO';
 
+export type ActiveButtonStyleProps = boolean;
+
 type Props = {
   type: ButtonTypeStyleProps;
+  isActive?: ActiveButtonStyleProps;
 }
 
 export const Container = styled(TouchableOpacity) <Props>`
+  ${({ theme, isActive, type }) => isActive && css`
+    border: 1px solid;
+    border-color: ${type === 'YES' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
+    background-color: ${type === 'YES' ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
+  `};
+
   width: 48.5%;
   height: 50px;
   background-color: ${({ theme }) => theme.COLORS.GRAY_6};
@@ -36,5 +45,5 @@ export const Icon = styled.View <Props> `
   border-radius: 6px;
   margin-right: 8px;
 
-  background-color: ${({ theme, type }) => type === 'YES' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK };
+  background-color: ${({ theme, type }) => type === 'YES' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
 `;

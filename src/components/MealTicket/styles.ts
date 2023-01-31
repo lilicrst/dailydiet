@@ -1,6 +1,12 @@
 import theme from "src/theme";
 import styled, { css } from "styled-components/native";
 
+export type StatusTypeStyleProps = boolean;
+
+type Props = {
+  type: StatusTypeStyleProps;
+}
+
 export const Container = styled.View`
   width: 100%;
   height: 49px;
@@ -43,12 +49,12 @@ export const Divider = styled.View`
   background-color: ${({ theme }) => theme.COLORS.GRAY_4};
 `;
 
-export const Status = styled.View`
+export const Status = styled.View <Props>`
   width: 14px;
   height: 14px;
 
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_MID};
+  background-color: ${({ theme,type }) => type === true ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID };
 
   justify-self: last baseline;
 `;

@@ -1,15 +1,17 @@
 import { TouchableOpacityProps } from "react-native";
-import { ButtonTypeStyleProps, Container, Icon, Title } from "./styles";
+import { ActiveButtonStyleProps, ButtonTypeStyleProps, Container, Icon, Title } from "./styles";
 
 type Props = TouchableOpacityProps & {
   title: string;
-  type?: ButtonTypeStyleProps;
+  type: ButtonTypeStyleProps;
+  isActive?: ActiveButtonStyleProps;
 }
 
-export function MiniButton({ title, type = 'YES', ...rest }: Props){
+export function MiniButton({ title, isActive = false, type, ...rest }: Props){
   return (
     <Container 
       type={type}
+      isActive={isActive}
       {...rest}
     >
       <Icon type={type} />

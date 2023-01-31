@@ -32,7 +32,7 @@ export function NewMeal() {
 
         <Column>
           <MiniButton type="YES" title="Sim" />
-          <MiniButton type="NO" title="Não" />
+          <MiniButton type="NO" title="Não"  isActive={true} />
         </Column>
 
         <BoxButton>

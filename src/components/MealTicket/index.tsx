@@ -1,22 +1,24 @@
-import { Container, Divider, Hour, Meal, Status } from "./styles";
+import { StatusTypeStyleProps ,Container, Divider, Hour, Meal, Status } from "./styles";
 
 type Props = {
   hour: string;
   meal: string;
-  status?: boolean;
+  status: StatusTypeStyleProps;
 }
 
 export function MealTicket({ hour, meal, status}: Props){
   return(
     <Container>
       <Hour>
-        {hour}
+        {hour}  
       </Hour>
       <Divider />
       <Meal>
         {meal}
       </Meal>
-      <Status />
+      <Status 
+        type={status}
+      />
     </Container>
   );
 }
