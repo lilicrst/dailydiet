@@ -9,7 +9,7 @@ type Props = {
 
 export const Container = styled(TextInput) <Props>`
   flex: 1;
-  width: ${({ type }) => type === 'DATEHOUR' ? '153px' : '100%'};
+  width: ${({ type }) => type === 'DATEHOUR' ? 'auto' : '100%'};
 
   min-height: ${({ type }) => type === 'DESCRIPTION' ? '120px' : '48px'};
   max-height: ${({ type }) => type === 'DESCRIPTION' ? '120px' : '48px'};

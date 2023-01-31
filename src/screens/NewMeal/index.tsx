@@ -2,7 +2,8 @@ import { BackButton } from "@components/BackButton";
 import { Button } from "@components/Button";
 import { HeaderTitle } from "@components/HeaderTitle";
 import { Input } from "@components/Input";
-import { Binded, Column, Container, Label, SlidingScreen } from "./styles";
+import { MiniButton } from "@components/MiniButton";
+import { Binded, BoxButton, Column, Container, Label, SlidingScreen } from "./styles";
 
 export function NewMeal() {
   return (
@@ -24,13 +25,20 @@ export function NewMeal() {
           <Binded>
             <Label>Hora</Label>
             <Input type='DATEHOUR' />
-          </Binded>                            
-
+          </Binded>
         </Column>
 
         <Label>Está dentro da dieta?</Label>
-              
-        <Button title="Cadastrar refeição" />
+
+        <Column>
+          <MiniButton type="YES" title="Sim" />
+          <MiniButton type="NO" title="Não" />
+        </Column>
+
+        <BoxButton>
+          <Button title="Cadastrar refeição" />
+        </BoxButton>
+
       </SlidingScreen>
     </Container>
   );

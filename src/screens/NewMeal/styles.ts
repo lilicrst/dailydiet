@@ -31,16 +31,28 @@ export const Label = styled.Text`
     color: ${theme.COLORS.GRAY_2};
   `}
   margin-bottom: 4px;
-  flex: auto;
+  width: auto;
 `;
 
-export const Binded = styled.View``;
+export const Binded = styled.View`
+  width: 47%;
+  height: auto;
+`;
 
 export const Column = styled.View`
-  flex: 1;
+  height: 90px;
+  display: flex;
   flex-direction: row;
-  height: 94px;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  column-gap: 12px;  
+  justify-content: space-between;
+  align-self: stretch;
+`;
+
+export const BoxButton = styled.View`
+  width: 100%;
+  height: auto;
+
+  position: absolute;
+  top: 93%;
+  align-self: center;
+
 `;
