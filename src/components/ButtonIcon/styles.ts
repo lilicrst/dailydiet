@@ -39,5 +39,3 @@ export const Icon = styled(Plus).attrs(({ theme }) => ({
 }))<Props>`
   margin-right: 12px;
 `;
-
-//https://app.rocketseat.com.br/h/forum/react-native/421811c8-910e-4a8d-9c5d-fd49990039e1

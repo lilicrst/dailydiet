@@ -31,8 +31,8 @@ export function NewMeal() {
         <Label>Está dentro da dieta?</Label>
 
         <Column>
-          <MiniButton type="YES" title="Sim" />
-          <MiniButton type="NO" title="Não"  isActive={true} />
+          <MiniButton type="YES" title="Sim" isActive={true} />
+          <MiniButton type="NO" title="Não"  />
         </Column>
 
         <BoxButton>

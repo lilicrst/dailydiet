@@ -1,5 +1,6 @@
-import styled, { css } from "styled-components/native";
-import { TouchableOpacity } from "react-native";
+import styled, { css, DefaultTheme } from "styled-components/native";
+import { ThemeAttributeBackgroundPropType, TouchableOpacity } from "react-native";
+import theme from "src/theme";
 
 export type ButtonTypeStyleProps = 'YES' | 'NO';
 
@@ -10,16 +11,27 @@ type Props = {
   isActive?: ActiveButtonStyleProps;
 }
 
+function DefineBackgroundColor({type, isActive}: Props){
+  if (type === 'YES' && isActive) {
+    return ('#E5F0DB')
+  } else if (type === 'NO' && isActive) {
+    return ('#F4E6E7')
+  } else {
+    return ("#EFF0F0")
+  }
+}
+
 export const Container = styled(TouchableOpacity) <Props>`
   ${({ theme, isActive, type }) => isActive && css`
     border: 1px solid;
     border-color: ${type === 'YES' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
-    background-color: ${type === 'YES' ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
   `};
+
+  background-color: ${({ theme, type, isActive }) => DefineBackgroundColor};
+  
 
   width: 48.5%;
   height: 50px;
-  background-color: ${({ theme }) => theme.COLORS.GRAY_6};
 
   border-radius: 6px;
   padding: 16px;
@@ -47,3 +59,5 @@ export const Icon = styled.View <Props> `
 
   background-color: ${({ theme, type }) => type === 'YES' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
 `;
+
+//https://app.rocketseat.com.br/h/forum/react-native/421811c8-910e-4a8d-9c5d-fd49990039e1
