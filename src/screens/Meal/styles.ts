@@ -57,3 +57,17 @@ export const LegendMarker = styled.Text`
     color: ${theme.COLORS.GRAY_1};
   `}
 `;
+
+export const BoxButton = styled.View`
+  width: 100%;
+  height: auto;
+
+  position: absolute;
+  top: 85%;
+  align-self: center;
+`;
+
+export const Separator = styled.View`
+  width: auto;
+  height: 10px;
+`;

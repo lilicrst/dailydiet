@@ -34,7 +34,7 @@ export const Title = styled.Text <Props>`
 
 export const Icon = styled(Feather).attrs<Props>(({ theme, type }) => ({
   color: type === 'PRIMARY' ? theme.COLORS.WHITE : theme.COLORS.GRAY_1,
-  size: 17,
+  size: 16,
 }))`
   margin-right: 12px;
 `;
