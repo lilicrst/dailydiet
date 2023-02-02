@@ -1,21 +1,22 @@
 import { TouchableOpacityProps } from "react-native";
 import { ButtonTypeStyleProps, Container, Icon, Title } from "./styles";
+import { Feather } from '@expo/vector-icons';
 
 type Props = TouchableOpacityProps & {
-  icon: string;
+  icon: keyof typeof Feather.glyphMap;
   title: string;
   type?: ButtonTypeStyleProps;
 }
 
 export function ButtonIcon({ icon, title, type = 'PRIMARY', ...rest }: Props){
   return (
-    <Container 
+    <Container    
       type={type}
       {...rest}
     >
       <Icon 
         type={type} 
-        name="plus"
+        name={icon}
       />
 
       <Title type={type}>

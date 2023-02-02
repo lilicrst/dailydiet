@@ -63,6 +63,7 @@ export function Home() {
       </Text>
       <ButtonIcon
         title='Nova refeição'
+        icon='plus'
         onPress={Preencher}
       />
 
