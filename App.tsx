@@ -10,6 +10,7 @@ import { Statistics } from '@screens/Statistics';
 import { NewMeal } from '@screens/NewMeal';
 import { Home } from '@screens/Home';
 import { Feedback } from '@screens/Feedback';
+import { Meal } from '@screens/Meal';
 
 export default function App() {
   const [fontsLoaded] = useFonts ({ NunitoSans_400Regular, NunitoSans_700Bold });
@@ -21,7 +22,7 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-      {fontsLoaded ? <Home /> : <Loading /> }
+      {fontsLoaded ? <Meal /> : <Loading /> }
     </ThemeProvider>
   );
 }
