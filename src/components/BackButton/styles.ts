@@ -1,9 +1,15 @@
 import styled from "styled-components/native";
-import { ArrowLeft } from 'phosphor-react-native';
+import { Feather } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native";
 
-export const Icon = styled(ArrowLeft).attrs(({ theme }) => ({
-  color: theme.COLORS.GREEN_DARK,
+export type ButtonTypeStyleProps = 'PRIMARY' | 'SECONDARY';
+
+type Props = {
+  type: ButtonTypeStyleProps;
+}
+
+export const Icon = styled(Feather).attrs<Props>(({ theme, type }) => ({
+  color: type === 'PRIMARY' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
   size: 24,
 }))`
 

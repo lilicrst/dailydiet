@@ -1,8 +1,15 @@
 import { Container } from "@components/Loading/styles";
-import { Icon } from "./styles";
+import { ButtonTypeStyleProps, Icon } from "./styles";
 
-export function BackButton(){
+type Props = {
+  type?: ButtonTypeStyleProps;
+}
+
+export function BackButton({ type = 'PRIMARY'}: Props){
   return(
-      <Icon />
+      <Icon 
+        name="arrow-left"
+        type={type}
+      />
   )
 }

@@ -4,7 +4,9 @@ import { Container, Icon } from "./styles";
 export function PercentageChart() {
   return (
     <Container>
-      <Icon />
+      <Icon 
+        name="arrow-up-right"
+      />
       <GeneralStatistics percentage="63,8%" />
     </Container>
   )

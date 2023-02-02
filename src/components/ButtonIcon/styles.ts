@@ -1,5 +1,5 @@
 import styled, {css} from "styled-components/native";
-import { Plus } from 'phosphor-react-native';
+import { Feather } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native";
 
 export type ButtonTypeStyleProps = 'PRIMARY' | 'SECONDARY';
@@ -32,10 +32,9 @@ export const Title = styled.Text <Props>`
   line-height: 20px;
 `;
 
-export const Icon = styled(Plus).attrs(({ theme }) => ({
-  color: theme.COLORS.GRAY_4,
+export const Icon = styled(Feather).attrs<Props>(({ theme, type }) => ({
+  color: type === 'PRIMARY' ? theme.COLORS.WHITE : theme.COLORS.GRAY_1,
   size: 18,
-  weight: 'bold',
-}))<Props>`
+}))`
   margin-right: 12px;
 `;

@@ -1,6 +1,6 @@
 import { TouchableOpacity } from "react-native";
 import styled, { css } from "styled-components/native";
-import { ArrowUpRight } from 'phosphor-react-native';
+import { Feather } from '@expo/vector-icons';
 
 export const Container = styled(TouchableOpacity)`
   width: 100%;
@@ -16,7 +16,7 @@ export const Container = styled(TouchableOpacity)`
   margin-bottom: 40px;
 `;
 
-export const Icon = styled(ArrowUpRight).attrs(({ theme }) => ({
+export const Icon = styled(Feather).attrs(({ theme }) => ({
   color: theme.COLORS.GREEN_DARK,
   size: 24,
 }))`
