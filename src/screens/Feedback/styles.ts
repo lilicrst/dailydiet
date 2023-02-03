@@ -1,3 +1,4 @@
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styled, { css } from "styled-components/native";
 
 export type ScreenStatusStyleProps = boolean;
@@ -6,7 +7,7 @@ type Props = {
   status: ScreenStatusStyleProps;
 }
 
-export const Container = styled.View`
+export const Container = styled(SafeAreaView)`
   flex: 1;
   background-color: ${({ theme }) => theme.COLORS.GRAY_7};
   padding: 24px;
