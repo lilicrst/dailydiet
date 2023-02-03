@@ -6,21 +6,21 @@ import PositiveImg from '@assets/positive.png'
 import NegativeImg from '@assets/negative.png'
 
 type Props = {
-  type?: ScreenStatusStyleProps;
+  status?: ScreenStatusStyleProps;
 }
 
-export function Feedback({ type = 'POSITIVE' }: Props){
+export function Feedback({ status = true }: Props){
 
-  function TitleByStatus({type}: Props){
-    if (type === 'POSITIVE') {
+  function TitleByStatus({status}: Props){
+    if (status === true ) {
       return ("Continue assim!")
     } else {
       return ("Que pena!")
     }
   }
 
-  function SubitleByStatus({type}: Props){
-    if (type === 'POSITIVE') {
+  function SubitleByStatus({status}: Props){
+    if (status === true ) {
       return ("Você continua dentro da dieta. Muito bem!")
     } else {
       return ("Você saiu da dieta dessa vez, mas continue se esforçando e não desista!")
@@ -29,15 +29,15 @@ export function Feedback({ type = 'POSITIVE' }: Props){
 
   return (
     <Container>
-      <Title type={type}>
-        {TitleByStatus({type})}
+      <Title status={status}>
+        {TitleByStatus({status})}
       </Title>
       <Subtitle>
-        {SubitleByStatus({type})}
+        {SubitleByStatus({status})}
       </Subtitle>
 
       <Ilustration 
-        source={type === 'POSITIVE' ? PositiveImg : NegativeImg}
+        source={status === true ? PositiveImg : NegativeImg}
       />
 
       <Button 

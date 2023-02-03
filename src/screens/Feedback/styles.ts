@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components/native";
 
-export type ScreenStatusStyleProps = 'POSITIVE' | 'NEGATIVE';
+export type ScreenStatusStyleProps = boolean;
 
 type Props = {
-  type: ScreenStatusStyleProps;
+  status: ScreenStatusStyleProps;
 }
 
 export const Container = styled.View`
@@ -16,10 +16,10 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text <Props>`
-  ${({ theme, type }) => css`
+  ${({ theme, status }) => css`
     font-size: ${theme.FONT_SIZE.TITLE_M}px;
     font-family: ${theme.FONT_FAMILY.BOLD};
-    color: ${ type === 'POSITIVE' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
+    color: ${ status === true ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
   `}
   margin-bottom:8px;
 `;
