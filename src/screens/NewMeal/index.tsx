@@ -1,3 +1,5 @@
+import { useNavigation } from '@react-navigation/native';
+
 import { BackButton } from "@components/BackButton";
 import { Button } from "@components/Button";
 import { HeaderTitle } from "@components/HeaderTitle";
@@ -6,6 +8,13 @@ import { MiniButton } from "@components/MiniButton";
 import { Binded, BoxButton, Column, Container, Label, SlidingScreen } from "./styles";
 
 export function NewMeal() {
+
+  const navigation = useNavigation();
+
+  function handleSaveMeal(){
+    navigation.navigate('feedback', { status: true });
+  }
+  
   return (
     <Container>
       <BackButton />
@@ -36,7 +45,10 @@ export function NewMeal() {
         </Column>
 
         <BoxButton>
-          <Button title="Cadastrar refeição" />
+          <Button 
+            title="Cadastrar refeição" 
+            onPress={handleSaveMeal}
+          />
         </BoxButton>
 
       </SlidingScreen>

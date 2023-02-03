@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SectionList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { StatusBar } from 'expo-status-bar';
 import { Container, DateList, Text } from './styles';
@@ -53,18 +54,30 @@ export function Home() {
     )
   }
 
+  const navigation = useNavigation();
+
+  function handleNewMeal() {
+    navigation.navigate('new');
+  }
+
+  function handleOpenStatistics() {
+    navigation.navigate('statistics');
+  }
+
   return (
     <Container>
       <StatusBar style="auto" />
       <Header />
-      <PercentageChart />
+      <PercentageChart 
+        onPress={handleOpenStatistics}
+      />
       <Text>
         Refeições
       </Text>
       <ButtonIcon
         title='Nova refeição'
         icon='plus'
-        onPress={Preencher}
+        onPress={handleNewMeal}
       />
 
       <SectionList

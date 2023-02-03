@@ -1,9 +1,12 @@
+import { TouchableOpacityProps } from "react-native";
 import { GeneralStatistics } from "@components/GeneralStatistics";
 import { Container, Icon } from "./styles";
 
-export function PercentageChart() {
+type Props = TouchableOpacityProps;
+
+export function PercentageChart({ ...rest }: Props) {
   return (
-    <Container>
+    <Container {...rest} >
       <Icon 
         name="arrow-up-right"
       />

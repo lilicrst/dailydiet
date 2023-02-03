@@ -6,10 +6,10 @@ import PositiveImg from '@assets/positive.png'
 import NegativeImg from '@assets/negative.png'
 
 type Props = {
-  status?: ScreenStatusStyleProps;
+  status: ScreenStatusStyleProps;
 }
 
-export function Feedback({ status = true }: Props){
+export function Feedback({ status }: Props){
 
   function TitleByStatus({status}: Props){
     if (status === true ) {
