@@ -6,10 +6,10 @@ import PositiveImg from '@assets/positive.png'
 import NegativeImg from '@assets/negative.png'
 
 type Props = {
-  type: ScreenStatusStyleProps;
+  type?: ScreenStatusStyleProps;
 }
 
-export function Feedback({ type }: Props){
+export function Feedback({ type = 'POSITIVE' }: Props){
 
   function TitleByStatus({type}: Props){
     if (type === 'POSITIVE') {
@@ -24,14 +24,6 @@ export function Feedback({ type }: Props){
       return ("Você continua dentro da dieta. Muito bem!")
     } else {
       return ("Você saiu da dieta dessa vez, mas continue se esforçando e não desista!")
-    }
-  }
-
-  function ImgByStatus({type}: Props){
-    if (type === 'POSITIVE') {
-      return ({PositiveImg})
-    } else {
-      return ({NegativeImg})
     }
   }
 

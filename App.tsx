@@ -22,7 +22,7 @@ export default function App() {
         backgroundColor='transparent'
         translucent
       />
-      {fontsLoaded ? <Meal /> : <Loading /> }
+      {fontsLoaded ? <Home /> : <Loading /> }
     </ThemeProvider>
   );
 }
