@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { BackButton } from "@components/BackButton";
@@ -14,6 +15,8 @@ export function NewMeal() {
   function handleSaveMeal(){
     navigation.navigate('feedback', { status: true });
   }
+
+  const [miniButtonChecked, setMiniButtonChecked] = useState('none');
   
   return (
     <Container>
@@ -40,8 +43,18 @@ export function NewMeal() {
         <Label>Está dentro da dieta?</Label>
 
         <Column>
-          <MiniButton type="YES" title="Sim" isActive={true} />
-          <MiniButton type="NO" title="Não"  />
+          <MiniButton 
+            type="YES" 
+            title="Sim" 
+            isActive={miniButtonChecked === 'yes' ? true : false} 
+            onPress={() => setMiniButtonChecked('yes')}
+          />
+          <MiniButton 
+            type="NO" 
+            title="Não"  
+            isActive={miniButtonChecked === 'no' ? true : false}
+            onPress={() => setMiniButtonChecked('no')}
+          />
         </Column>
 
         <BoxButton>
