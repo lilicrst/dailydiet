@@ -1,5 +1,7 @@
+import { TouchableOpacity } from "react-native";
 import theme from "src/theme";
 import styled, { css } from "styled-components/native";
+
 
 export type StatusTypeStyleProps = boolean;
 
@@ -7,7 +9,7 @@ type Props = {
   type: StatusTypeStyleProps;
 }
 
-export const Container = styled.View`
+export const Container = styled(TouchableOpacity)`
   width: 100%;
   height: 49px;
 

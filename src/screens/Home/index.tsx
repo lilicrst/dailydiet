@@ -64,7 +64,11 @@ export function Home() {
     navigation.navigate('statistics');
   }
 
-  return (
+  function handleOpenMeal() {
+    navigation.navigate('meal');
+  }
+
+  return (    
     <Container>
       <StatusBar style="auto" />
       <Header />
@@ -88,6 +92,7 @@ export function Home() {
             hour={item.hour}
             meal={item.meal}
             status={item.status}
+            onPress={handleOpenMeal}
           />
         )}
         renderSectionHeader={({section: {title}}) => (

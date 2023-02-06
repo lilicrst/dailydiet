@@ -7,9 +7,10 @@ export declare global {
       feedback: {
         status: boolean;
       }
-      meal: {
-        name: string;
-      }
+      meal: undefined;
+      // {
+      //   name: string;
+      // }
     }
   }
 }

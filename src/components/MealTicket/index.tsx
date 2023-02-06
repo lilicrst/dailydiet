@@ -1,14 +1,15 @@
+import { TouchableOpacityProps } from "react-native";
 import { StatusTypeStyleProps ,Container, Divider, Hour, Meal, Status } from "./styles";
 
-type Props = {
+type Props = TouchableOpacityProps & {
   hour: string;
   meal: string;
   status: StatusTypeStyleProps;
 }
 
-export function MealTicket({ hour, meal, status}: Props){
+export function MealTicket({ hour, meal, status, ...rest}: Props){
   return(
-    <Container>
+    <Container {...rest} >
       <Hour>
         {hour}  
       </Hour>

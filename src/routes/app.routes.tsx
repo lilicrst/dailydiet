@@ -25,8 +25,7 @@ export function AppRoutes() {
       />
       <Screen
         name='feedback'
-        component={Feedback}
-        // ver como faz pra chamar a tela já dizendo o type
+        component={Feedback}        
       />
       <Screen
         name='meal'
