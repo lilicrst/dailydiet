@@ -15,7 +15,14 @@ export function NewMeal() {
   const navigation = useNavigation();
 
   function handleSaveMeal(){
-    navigation.navigate('feedback', { status: true });
+    let status = true;
+    
+    if (miniButtonChecked === 'yes') {
+      status = true
+    } if (miniButtonChecked === 'no') {
+      status = false
+    }    
+    navigation.navigate('feedback', { status: status });
   }
   
   return (
