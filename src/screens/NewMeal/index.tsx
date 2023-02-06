@@ -9,14 +9,14 @@ import { MiniButton } from "@components/MiniButton";
 import { Binded, BoxButton, Column, Container, Label, SlidingScreen } from "./styles";
 
 export function NewMeal() {
+  
+  const [miniButtonChecked, setMiniButtonChecked] = useState('none');
 
   const navigation = useNavigation();
 
   function handleSaveMeal(){
     navigation.navigate('feedback', { status: true });
   }
-
-  const [miniButtonChecked, setMiniButtonChecked] = useState('none');
   
   return (
     <Container>
@@ -27,7 +27,11 @@ export function NewMeal() {
         <Input type='NAME' />
 
         <Label>Descrição</Label>
-        <Input type='DESCRIPTION' />
+        <Input           
+          type='DESCRIPTION' 
+          multiline={true} 
+          textAlignVertical={'top'}
+        />
 
         <Column>
           <Binded>
