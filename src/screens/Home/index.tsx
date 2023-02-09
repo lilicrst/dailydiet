@@ -24,32 +24,32 @@ export function Home() {
   const [mealLists, setMealLists] = useState<MealListProps[]>([]);
 
   function Preencher() {
-    setMealLists(prevState => [ ...prevState, 
-      {
-        title: '18.01.23',
-        data: [
-          {
-            hour: '08:00',
-            meal: 'Cuscuz com ovo',
-            status: true
-          },
-          {
-            hour: '12:00',
-            meal: 'Lasanha',
-            status: true
-          },
-          {
-            hour: '15:30',
-            meal: 'Morangos',
-            status: true
-          },
-          {
-            hour: '19:45',
-            meal: 'Crepioca',
-            status: false
-          },
-        ]
-      },
+    setMealLists(prevState => [...prevState,
+    {
+      title: '18.01.23',
+      data: [
+        {
+          hour: '08:00',
+          meal: 'Cuscuz com ovo',
+          status: true
+        },
+        {
+          hour: '12:00',
+          meal: 'Lasanha',
+          status: false
+        },
+        {
+          hour: '15:30',
+          meal: 'Morangos',
+          status: true
+        },
+        {
+          hour: '19:45',
+          meal: 'Crepioca',
+          status: false
+        },
+      ]
+    },
     ]
     )
   }
@@ -68,11 +68,11 @@ export function Home() {
     navigation.navigate('meal');
   }
 
-  return (    
+  return (
     <Container>
       <StatusBar style="auto" />
       <Header />
-      <PercentageChart 
+      <PercentageChart
         onPress={handleOpenStatistics}
       />
       <Text>
@@ -87,7 +87,7 @@ export function Home() {
       <SectionList
         sections={mealLists}
         keyExtractor={(item) => item.meal}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <MealTicket
             hour={item.hour}
             meal={item.meal}
@@ -95,7 +95,7 @@ export function Home() {
             onPress={handleOpenMeal}
           />
         )}
-        renderSectionHeader={({section: {title}}) => (
+        renderSectionHeader={({ section: { title } }) => (
           <DateList>{title}</DateList>
         )}
       />

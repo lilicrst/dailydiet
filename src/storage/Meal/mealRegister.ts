@@ -1,16 +1,17 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+// appError faltando
 
 import { MEALS_COLLECTION } from "@storage/storageConfig";
+import { MealStorageDTO } from './MealStorageDTO';
 import { mealGetAll } from "./mealGetAll";
 
-export async function mealRegister(newMealName: string){
+export async function mealRegister(newMeal: MealStorageDTO, day: string){
   try{
 
-    const storedMeals = await mealGetAll();
+    
+    await AsyncStorage.setItem(`${MEALS_COLLECTION}-${day}`, '');
 
-    const storage = JSON.stringify([...storedMeals ,newMealName]);
-    await AsyncStorage.setItem(MEALS_COLLECTION, storage);
   }catch(error){
-
+    throw(error);
   }
 }
