@@ -1,25 +1,40 @@
 import { useState } from 'react';
+import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import { Binded, BoxButton, Column, Container, Label, SlidingScreen } from "./styles";
 import { BackButton } from "@components/BackButton";
 import { Button } from "@components/Button";
 import { HeaderTitle } from "@components/HeaderTitle";
 import { Input } from "@components/Input";
 import { MiniButton } from "@components/MiniButton";
-import { Binded, BoxButton, Column, Container, Label, SlidingScreen } from "./styles";
+
+import { mealRegister } from '@storage/Meal/mealRegister';
+import { mealGetByDay } from '@storage/Meal/mealGetByDay';
 
 export function NewMeal() {
 
-  const [nameInput, setNameInput] = useState<string>();
-  const [descriptionInput, setDescriptionInput] = useState<string>();
-  const [dateInput, setDateInput] = useState<string>();
-  const [hourInput, setHourInput] = useState<string>();
+  const [nameInput, setNameInput] = useState<string>('');
+  const [descriptionInput, setDescriptionInput] = useState<string>('');
+  const [dateInput, setDateInput] = useState<string>('');
+  const [hourInput, setHourInput] = useState<string>('');
 
   const [miniButtonChecked, setMiniButtonChecked] = useState('none');
 
   const navigation = useNavigation();
 
-  function handleSaveMeal() {
+  async function handleSaveMeal() {
+    
+    if (
+      nameInput.trim().length === 0 || 
+      descriptionInput.trim().length === 0 ||
+      dateInput.trim().length === 0 || 
+      hourInput.trim().length === 0 || 
+      miniButtonChecked === 'none'
+      ) {
+      return Alert.alert('Nova refeição', 'Preencha todos os campos para cadastrar a refeição.');
+    }
+
     let status = true;    
 
     if (miniButtonChecked === 'yes') {
@@ -36,7 +51,15 @@ export function NewMeal() {
       status
     }
 
-    console.log(newMeal);
+    try {
+      await mealRegister(newMeal, newMeal.date);
+      const meals = await mealGetByDay(newMeal.date);
+      console.log(meals);
+      
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Nova refeição', 'Não foi possível adicionar.');
+    }
 
     navigation.navigate('feedback', { status: status });
   }
