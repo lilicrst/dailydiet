@@ -2,15 +2,18 @@ import { useState } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { Binded, BoxButton, Column, Container, Label, SlidingScreen } from "./styles";
+import { mealRegister } from '@storage/Meal/mealRegister';
+import { mealGetByDay } from '@storage/Meal/mealGetByDay';
+import { dayRegister } from '@storage/Days/dayRegister';
+
 import { BackButton } from "@components/BackButton";
 import { Button } from "@components/Button";
 import { HeaderTitle } from "@components/HeaderTitle";
 import { Input } from "@components/Input";
 import { MiniButton } from "@components/MiniButton";
 
-import { mealRegister } from '@storage/Meal/mealRegister';
-import { mealGetByDay } from '@storage/Meal/mealGetByDay';
+import { Binded, BoxButton, Column, Container, Label, SlidingScreen } from "./styles";
+import { daysGetAll } from '@storage/Days/daysGetAll';
 
 export function NewMeal() {
 
@@ -24,38 +27,41 @@ export function NewMeal() {
   const navigation = useNavigation();
 
   async function handleSaveMeal() {
-    
+
     if (
-      nameInput.trim().length === 0 || 
+      nameInput.trim().length === 0 ||
       descriptionInput.trim().length === 0 ||
-      dateInput.trim().length === 0 || 
-      hourInput.trim().length === 0 || 
+      dateInput.trim().length === 0 ||
+      hourInput.trim().length === 0 ||
       miniButtonChecked === 'none'
-      ) {
+    ) {
       return Alert.alert('Nova refeição', 'Preencha todos os campos para cadastrar a refeição.');
     }
 
-    let status = true;    
+    let status = true;
 
     if (miniButtonChecked === 'yes') {
       status = true
     } if (miniButtonChecked === 'no') {
       status = false
     }
-    
+
     const newMeal = {
-      name: nameInput,
-      description: descriptionInput,
-      date: dateInput,
-      hour: hourInput,
-      status
+      title: dateInput,
+      data:
+      {
+        name: nameInput,
+        description: descriptionInput,
+        hour: hourInput,
+        status: status,
+      },
     }
 
     try {
-      await mealRegister(newMeal, newMeal.date);
-      const meals = await mealGetByDay(newMeal.date);
-      console.log(meals);
       
+      await mealRegister(newMeal, newMeal.title);      
+      await dayRegister(newMeal.title);         
+
     } catch (error) {
       console.log(error);
       Alert.alert('Nova refeição', 'Não foi possível adicionar.');

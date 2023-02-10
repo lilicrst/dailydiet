@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { SectionList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-
 import { StatusBar } from 'expo-status-bar';
-import { Container, DateList, Text } from './styles';
+
+import { daysGetAll } from '@storage/Days/daysGetAll';
 
 import { Header } from '@components/Header';
 import { PercentageChart } from '@components/PercentageChart';
 import { ButtonIcon } from '@components/ButtonIcon';
 import { MealTicket } from '@components/MealTicket';
+
+import { Container, DateList, Text } from './styles';
 
 type MealListProps = {
   title: string,
@@ -23,38 +25,25 @@ type MealListProps = {
 export function Home() {
   const [mealLists, setMealLists] = useState<MealListProps[]>([]);
 
-  function Preencher() {
-    setMealLists(prevState => [...prevState,
-    {
-      title: '18.01.23',
-      data: [
-        {
-          hour: '08:00',
-          meal: 'Cuscuz com ovo',
-          status: true
-        },
-        {
-          hour: '12:00',
-          meal: 'Lasanha',
-          status: false
-        },
-        {
-          hour: '15:30',
-          meal: 'Morangos',
-          status: true
-        },
-        {
-          hour: '19:45',
-          meal: 'Crepioca',
-          status: false
-        },
-      ]
-    },
-    ]
-    )
-  }
-
   const navigation = useNavigation();
+
+  async function fetchListsOfMeals() {
+    try {
+
+      const days = await daysGetAll();
+
+      for (let index = 0; index < days.length; index++) {        
+        // ver aquela parada do prevState pra ir colocando os bagui dentro do mealLists
+        // descobrir como vou colocar na posição certa, Jesus
+        // mas acho que vai ser de boa já que eu tenho um filtro por data, vai ser de boa
+        //setMealLists(prevState => [...prevState, ''])
+        console.log(days[index])
+      }
+      
+    } catch (error) {
+      
+    }
+  }
 
   function handleNewMeal() {
     navigation.navigate('new');
@@ -73,7 +62,7 @@ export function Home() {
       <StatusBar style="auto" />
       <Header />
       <PercentageChart
-        onPress={handleOpenStatistics}
+        onPress={handleOpenStatistics}        
       />
       <Text>
         Refeições
