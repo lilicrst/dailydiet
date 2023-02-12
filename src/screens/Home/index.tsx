@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { SectionList } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
 import { daysGetAll } from '@storage/Days/daysGetAll';
+import { mealGetByDay } from '@storage/Meal/mealGetByDay';
 
 import { Header } from '@components/Header';
 import { PercentageChart } from '@components/PercentageChart';
@@ -17,7 +18,8 @@ type MealListProps = {
   data:
   {
     hour: string,
-    meal: string,
+    description: string,
+    name: string,
     status: boolean,
   }[],
 }
@@ -27,42 +29,53 @@ export function Home() {
 
   const navigation = useNavigation();
 
-  async function fetchListsOfMeals() {
-    try {
-
-      const days = await daysGetAll();
-
-      for (let index = 0; index < days.length; index++) {        
-        // ver aquela parada do prevState pra ir colocando os bagui dentro do mealLists
-        // descobrir como vou colocar na posição certa, Jesus
-        // mas acho que vai ser de boa já que eu tenho um filtro por data, vai ser de boa
-        //setMealLists(prevState => [...prevState, ''])
-        console.log(days[index])
-      }
-      
-    } catch (error) {
-      
-    }
+  function handleOpenStatistics() {
+    navigation.navigate('statistics');
   }
 
   function handleNewMeal() {
     navigation.navigate('new');
   }
 
-  function handleOpenStatistics() {
-    navigation.navigate('statistics');
-  }
-
   function handleOpenMeal() {
     navigation.navigate('meal');
   }
+
+  async function fetchListsOfMeals() {
+    try {
+
+      const days = await daysGetAll();
+
+      const list = [];
+
+      for (let i = 0; i < days.length; i++) {
+
+        const meals = await mealGetByDay(days[i]);
+
+        list.push({
+          title: days[i],
+          data: meals
+        });
+      }
+
+      setMealLists(list);
+
+    } catch (error) {
+
+    }
+  }
+
+  useFocusEffect(useCallback(() => {
+    fetchListsOfMeals();
+  }, []))
+  // só usar o useEffect quando uma nova refeição for adicionada
 
   return (
     <Container>
       <StatusBar style="auto" />
       <Header />
       <PercentageChart
-        onPress={handleOpenStatistics}        
+        onPress={handleOpenStatistics}
       />
       <Text>
         Refeições
@@ -75,11 +88,11 @@ export function Home() {
 
       <SectionList
         sections={mealLists}
-        keyExtractor={(item) => item.meal}
+        keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
           <MealTicket
             hour={item.hour}
-            meal={item.meal}
+            meal={item.name}
             status={item.status}
             onPress={handleOpenMeal}
           />

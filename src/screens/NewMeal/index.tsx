@@ -3,7 +3,6 @@ import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { mealRegister } from '@storage/Meal/mealRegister';
-import { mealGetByDay } from '@storage/Meal/mealGetByDay';
 import { dayRegister } from '@storage/Days/dayRegister';
 
 import { BackButton } from "@components/BackButton";
@@ -13,7 +12,6 @@ import { Input } from "@components/Input";
 import { MiniButton } from "@components/MiniButton";
 
 import { Binded, BoxButton, Column, Container, Label, SlidingScreen } from "./styles";
-import { daysGetAll } from '@storage/Days/daysGetAll';
 
 export function NewMeal() {
 
@@ -47,20 +45,17 @@ export function NewMeal() {
     }
 
     const newMeal = {
-      title: dateInput,
-      data:
-      {
-        name: nameInput,
-        description: descriptionInput,
-        hour: hourInput,
-        status: status,
-      },
+      name: nameInput,
+      description: descriptionInput,
+      date: dateInput,
+      hour: hourInput,
+      status: status,
     }
 
     try {
-      
-      await mealRegister(newMeal, newMeal.title);      
-      await dayRegister(newMeal.title);         
+
+      await mealRegister(newMeal, newMeal.date);
+      await dayRegister(newMeal.date);
 
     } catch (error) {
       console.log(error);
