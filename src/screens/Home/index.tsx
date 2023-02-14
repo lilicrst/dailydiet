@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { SectionList } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
@@ -37,8 +37,8 @@ export function Home() {
     navigation.navigate('new');
   }
 
-  function handleOpenMeal() {
-    navigation.navigate('meal');
+  function handleOpenMeal(meal: string) {
+    navigation.navigate('meal', { mealName: meal });
   }
 
   async function fetchListsOfMeals() {
@@ -68,7 +68,6 @@ export function Home() {
   useFocusEffect(useCallback(() => {
     fetchListsOfMeals();
   }, []))
-  // só usar o useEffect quando uma nova refeição for adicionada
 
   return (
     <Container>
@@ -94,7 +93,7 @@ export function Home() {
             hour={item.hour}
             meal={item.name}
             status={item.status}
-            onPress={handleOpenMeal}
+            onPress={() => handleOpenMeal(item.name)}
           />
         )}
         renderSectionHeader={({ section: { title } }) => (

@@ -5,14 +5,3 @@ export type MealStorageDTO = {
     hour: string;
     status: boolean;
 }
-
-
-// type MealListProps = {
-//   title: string,
-//   data:
-//   {
-//     hour: string,
-//     meal: string,
-//     status: boolean,
-//   }[],
-// }

@@ -1,11 +1,27 @@
+import { useRoute } from '@react-navigation/native'
+
 import { BoxButton, Container, DateAndHour, Description, LegendMarker, Marker, MealName, Separator } from './styles'
+
 import { SlidingScreen } from '@screens/NewMeal/styles'
 import { BackButton } from '@components/BackButton'
 import { HeaderTitle } from '@components/HeaderTitle'
 import { Icon } from '@components/MiniButton/styles'
 import { ButtonIcon } from '@components/ButtonIcon'
 
+
+type RouteParams = {
+  mealName: string;
+}
+
 export function Meal() {
+
+  const route = useRoute();
+  const { mealName } = route.params as RouteParams;
+
+  function getMealName() {
+    console.log(mealName)
+  }
+
   return (
     <Container>
       <BackButton />
@@ -13,7 +29,7 @@ export function Meal() {
 
       <SlidingScreen>
         <MealName>
-          Sanduíche
+          {mealName}
         </MealName>
         <Description>
           Sanduíche de pão integral com atum e salada de alface e tomate
@@ -34,6 +50,7 @@ export function Meal() {
           <ButtonIcon
             icon='edit-3'
             title='Editar refeição'
+            onPress={getMealName}
           />
 
           <Separator />
