@@ -21,6 +21,7 @@ type MealListProps = {
     description: string,
     name: string,
     status: boolean,
+    key: string,
   }[],
 }
 
@@ -37,8 +38,8 @@ export function Home() {
     navigation.navigate('new');
   }
 
-  function handleOpenMeal(meal: string) {
-    navigation.navigate('meal', { mealName: meal });
+  function handleOpenMeal(key: string) {
+    navigation.navigate('meal', { key });
   }
 
   async function fetchListsOfMeals() {
@@ -93,7 +94,7 @@ export function Home() {
             hour={item.hour}
             meal={item.name}
             status={item.status}
-            onPress={() => handleOpenMeal(item.name)}
+            onPress={() => handleOpenMeal(item.key)}
           />
         )}
         renderSectionHeader={({ section: { title } }) => (

@@ -9,7 +9,7 @@ export declare global {
       }
       meal:
       {
-        mealName: string;
+        key: string;
       }
     }
   }

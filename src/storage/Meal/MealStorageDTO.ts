@@ -4,4 +4,5 @@ export type MealStorageDTO = {
     date: string;
     hour: string;
     status: boolean;
+    key: string;
 }

@@ -7,19 +7,27 @@ import { BackButton } from '@components/BackButton'
 import { HeaderTitle } from '@components/HeaderTitle'
 import { Icon } from '@components/MiniButton/styles'
 import { ButtonIcon } from '@components/ButtonIcon'
+import { mealGetByDay } from '@storage/Meal/mealGetByDay'
 
 
 type RouteParams = {
-  mealName: string;
+  key: string;
 }
 
 export function Meal() {
 
   const route = useRoute();
-  const { mealName } = route.params as RouteParams;
+  const { key } = route.params as RouteParams;
 
-  function getMealName() {
-    console.log(mealName)
+  async function getMealDay() {
+    //chamar dayGetAll e passar um filtro no key pra saber qual é a data. Retornar a data. Usar for.
+    console.log(key)
+  }
+
+  async function fetchMeal(){
+    // chamar a função acima e colocar o retorno dela na mealGetByDay. Depois de pegar a refeição, sei lá.
+    // tem que passar outro filtro pra saber qual das refeições desse dia tem a mesma chave. rs.
+    // const mealInfo = await mealGetByDay()
   }
 
   return (
@@ -29,7 +37,7 @@ export function Meal() {
 
       <SlidingScreen>
         <MealName>
-          {mealName}
+          Nada
         </MealName>
         <Description>
           Sanduíche de pão integral com atum e salada de alface e tomate
@@ -50,7 +58,7 @@ export function Meal() {
           <ButtonIcon
             icon='edit-3'
             title='Editar refeição'
-            onPress={getMealName}
+            onPress={getMealDay}
           />
 
           <Separator />

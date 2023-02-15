@@ -50,6 +50,7 @@ export function NewMeal() {
       date: dateInput,
       hour: hourInput,
       status: status,
+      key: `${nameInput}-${dateInput}-${hourInput}`
     }
 
     try {
