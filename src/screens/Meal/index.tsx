@@ -1,14 +1,17 @@
+import { useEffect, useState } from 'react'
 import { useRoute } from '@react-navigation/native'
 
 import { BoxButton, Container, DateAndHour, Description, LegendMarker, Marker, MealName, Separator } from './styles'
+
+import { mealGetByDay } from '@storage/Meal/mealGetByDay'
+import { daysGetAll } from '@storage/Days/daysGetAll'
+import { MealStorageDTO } from '@storage/Meal/MealStorageDTO'
 
 import { SlidingScreen } from '@screens/NewMeal/styles'
 import { BackButton } from '@components/BackButton'
 import { HeaderTitle } from '@components/HeaderTitle'
 import { Icon } from '@components/MiniButton/styles'
 import { ButtonIcon } from '@components/ButtonIcon'
-import { mealGetByDay } from '@storage/Meal/mealGetByDay'
-
 
 type RouteParams = {
   key: string;
@@ -16,19 +19,67 @@ type RouteParams = {
 
 export function Meal() {
 
+  const [meal, setMeal] = useState<MealStorageDTO>();
+
   const route = useRoute();
   const { key } = route.params as RouteParams;
 
   async function getMealDay() {
-    //chamar dayGetAll e passar um filtro no key pra saber qual é a data. Retornar a data. Usar for.
-    console.log(key)
+    const daysStored = await daysGetAll();
+
+    for (let i = 0; i < daysStored.length; i++) {
+      const keyDay = key.includes(daysStored[i])
+
+      if (keyDay) {
+        return daysStored[i];
+      }
+    }
+
+    // TODO 
+    return '';
   }
 
-  async function fetchMeal(){
-    // chamar a função acima e colocar o retorno dela na mealGetByDay. Depois de pegar a refeição, sei lá.
-    // tem que passar outro filtro pra saber qual das refeições desse dia tem a mesma chave. rs.
-    // const mealInfo = await mealGetByDay()
+  async function fetchMeal() {
+
+    try {
+
+      const day = await getMealDay();
+
+      const mealsByDay = await mealGetByDay(day);
+
+      for (let i = 0; i < mealsByDay.length; i++) {
+        const element = mealsByDay[i];
+
+        if (key.includes(element.name) && key.includes(element.hour)) {
+          setMeal(element);
+          break;
+        }
+      }
+
+    } catch (error) {
+
+    }
   }
+
+  function setMarkerIconStatus() {
+    if (meal?.status === true) {
+      return ('YES');
+    } else {
+      return ('NO');
+    }
+  }
+
+  function SetMarkerLegend() {
+    if (meal?.status === true) {
+      return ('dentro da dieta');
+    } else {
+      return ('fora da dieta');
+    }
+  }
+
+  useEffect(() => {
+    fetchMeal()
+  }, [])
 
   return (
     <Container>
@@ -37,28 +88,30 @@ export function Meal() {
 
       <SlidingScreen>
         <MealName>
-          Nada
+          {meal?.name}
         </MealName>
         <Description>
-          Sanduíche de pão integral com atum e salada de alface e tomate
+          {meal?.description}
         </Description>
 
         <DateAndHour>
           Data e hora
         </DateAndHour>
         <Description>
-          12/08/2022 às 16:00
+          {meal?.date} às {meal?.hour}
         </Description>
+
         <Marker>
-          <Icon type='YES' />
-          <LegendMarker>dentro da dieta</LegendMarker>
+          <Icon type={setMarkerIconStatus()} />
+          <LegendMarker>
+            {SetMarkerLegend()}
+          </LegendMarker>
         </Marker>
 
         <BoxButton>
           <ButtonIcon
             icon='edit-3'
             title='Editar refeição'
-            onPress={getMealDay}
           />
 
           <Separator />
