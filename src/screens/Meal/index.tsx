@@ -1,7 +1,10 @@
-import { useEffect, useState } from 'react'
-import { useRoute } from '@react-navigation/native'
+import { useEffect, useState } from 'react';
+import { Alert } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 
-import { BoxButton, Container, DateAndHour, Description, LegendMarker, Marker, MealName, Separator } from './styles'
+import { BoxButton, Container, DateAndHour, Description, LegendMarker, Marker, MealName, Separator } from './styles';
+
+import { AppError } from '@utils/AppError';
 
 import { mealGetByDay } from '@storage/Meal/mealGetByDay'
 import { daysGetAll } from '@storage/Days/daysGetAll'
@@ -21,20 +24,21 @@ export function Meal() {
 
   const [meal, setMeal] = useState<MealStorageDTO>();
 
+  const navigation = useNavigation();
   const route = useRoute();
   const { key } = route.params as RouteParams;
 
   async function getMealDay() {
     const daysStored = await daysGetAll();
+    let dayExists = false;
 
     for (let i = 0; i < daysStored.length; i++) {
-      const keyDay = key.includes(daysStored[i])
+      dayExists = key.includes(daysStored[i]);
 
-      if (keyDay) {
+      if (dayExists) {
         return daysStored[i];
       }
     }
-
     // TODO 
     return '';
   }
@@ -57,7 +61,14 @@ export function Meal() {
       }
 
     } catch (error) {
-
+      if (error instanceof AppError) {
+        Alert.alert('Página indisponível', error.message);
+        navigation.navigate('home');
+      } else {
+        Alert.alert('Página indisponível', 'Não foi possível abrir essa refeição.');
+        console.log(error);
+        navigation.navigate('home');
+      }
     }
   }
 

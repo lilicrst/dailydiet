@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { SectionList } from 'react-native';
+import { Alert, SectionList } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -39,7 +39,7 @@ export function Home() {
   }
 
   function handleOpenMeal(key: string) {
-    navigation.navigate('meal', { key });
+      navigation.navigate('meal', { key });  
   }
 
   async function fetchListsOfMeals() {
