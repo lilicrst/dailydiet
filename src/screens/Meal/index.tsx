@@ -6,16 +6,15 @@ import { BoxButton, Container, DateAndHour, Description, LegendMarker, Marker, M
 
 import { AppError } from '@utils/AppError';
 
-import { mealGetByDay } from '@storage/Meal/mealGetByDay'
-import { daysGetAll } from '@storage/Days/daysGetAll'
+import { mealGetByDay } from '@storage/Meal/mealGetByDay';
 import { mealRemoveByDay } from '@storage/Meal/mealRemoveByDay';
-import { MealStorageDTO } from '@storage/Meal/MealStorageDTO'
+import { MealStorageDTO } from '@storage/Meal/MealStorageDTO';
 
-import { SlidingScreen } from '@screens/NewMeal/styles'
-import { BackButton } from '@components/BackButton'
-import { HeaderTitle } from '@components/HeaderTitle'
-import { Icon } from '@components/MiniButton/styles'
-import { ButtonIcon } from '@components/ButtonIcon'
+import { SlidingScreen } from '@screens/NewMeal/styles';
+import { BackButton } from '@components/BackButton';
+import { HeaderTitle } from '@components/HeaderTitle';
+import { Icon } from '@components/MiniButton/styles';
+import { ButtonIcon } from '@components/ButtonIcon';
 
 type RouteParams = {
   key: string;
@@ -31,25 +30,8 @@ export function Meal() {
   const { key } = route.params as RouteParams;
   const { day } = route.params as RouteParams;
 
-  async function getMealDay() {
-    const daysStored = await daysGetAll();
-    let dayExists = false;
-
-    for (let i = 0; i < daysStored.length; i++) {
-      dayExists = key.includes(daysStored[i]);
-
-      if (dayExists) {
-        return daysStored[i];
-      }
-    }
-    // TODO 
-    return '';
-  }
-
   async function fetchMeal() {
-
     try {
-
       const mealsByDay = await mealGetByDay(day);
 
       for (let i = 0; i < mealsByDay.length; i++) {
@@ -82,6 +64,10 @@ export function Meal() {
       console.log(error);
       Alert.alert('Erro ao excluir', 'Não foi possível excluir essa refeição.');
     }
+  }
+
+  async function handleEditMeal() {
+    navigation.navigate('edit', { key, day });
   }
 
   function setMarkerIconStatus() {
@@ -135,6 +121,7 @@ export function Meal() {
           <ButtonIcon
             icon='edit-3'
             title='Editar refeição'
+            onPress={() => handleEditMeal()}
           />
 
           <Separator />

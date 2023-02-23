@@ -12,6 +12,10 @@ export declare global {
         key: string;
         day: string;
       }
+      edit: {
+        key: string;
+        day: string;
+      }
     }
   }
 }
