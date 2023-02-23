@@ -10,6 +10,7 @@ export declare global {
       meal:
       {
         key: string;
+        day: string;
       }
     }
   }

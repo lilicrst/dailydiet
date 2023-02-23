@@ -8,6 +8,7 @@ import { AppError } from '@utils/AppError';
 
 import { mealGetByDay } from '@storage/Meal/mealGetByDay'
 import { daysGetAll } from '@storage/Days/daysGetAll'
+import { mealRemoveByDay } from '@storage/Meal/mealRemoveByDay';
 import { MealStorageDTO } from '@storage/Meal/MealStorageDTO'
 
 import { SlidingScreen } from '@screens/NewMeal/styles'
@@ -18,6 +19,7 @@ import { ButtonIcon } from '@components/ButtonIcon'
 
 type RouteParams = {
   key: string;
+  day: string;
 }
 
 export function Meal() {
@@ -27,6 +29,7 @@ export function Meal() {
   const navigation = useNavigation();
   const route = useRoute();
   const { key } = route.params as RouteParams;
+  const { day } = route.params as RouteParams;
 
   async function getMealDay() {
     const daysStored = await daysGetAll();
@@ -46,8 +49,6 @@ export function Meal() {
   async function fetchMeal() {
 
     try {
-
-      const day = await getMealDay();
 
       const mealsByDay = await mealGetByDay(day);
 
@@ -69,6 +70,17 @@ export function Meal() {
         console.log(error);
         navigation.navigate('home');
       }
+    }
+  }
+
+  async function handleRemoveMeal() {
+    try {
+      await mealRemoveByDay(key, day);
+      Alert.alert('Refeição excluída', 'Esse registro foi excluído com sucesso.');
+      navigation.navigate('home');
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Erro ao excluir', 'Não foi possível excluir essa refeição.');
     }
   }
 
@@ -131,6 +143,7 @@ export function Meal() {
             icon='trash-2'
             title='Excliur refeição'
             type='SECONDARY'
+            onPress={() => handleRemoveMeal()}
           />
         </BoxButton>
 
