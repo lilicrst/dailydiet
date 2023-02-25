@@ -101,6 +101,12 @@ export function Home() {
         renderSectionHeader={({ section: { title } }) => (
           <DateList>{title}</DateList>
         )}
+        ListEmptyComponent={() => (
+          <Text>
+            Não há refeições registradas ainda. {'\n'}
+            Comece a registrar agora.
+          </Text>
+        )}
       />
 
     </Container>

@@ -12,7 +12,7 @@ export const Container = styled(SafeAreaView)`
 
 export const SlidingScreen = styled.View`
   width: 100%;
-  height: 100%;
+  height: 110%;
   position: absolute;
   align-items: flex-start;
   
@@ -52,7 +52,6 @@ export const BoxButton = styled.View`
   width: 100%;
   height: auto;
 
-  position: absolute;
-  top: 97%;
+  margin-top: 140px;
   align-self: center;
 `;

@@ -11,8 +11,9 @@ export const Container = styled(SafeAreaView)`
 `;
 
 export const SlidingScreen = styled.View`
+  flex: 1;
   width: 100%;
-  height: 100%;
+  height: 110%;
   position: absolute;
   align-items: flex-start;
   
@@ -22,7 +23,7 @@ export const SlidingScreen = styled.View`
   padding-top: 40px;
   top: 104px;
 
-  background-color: ${({ theme }) => theme.COLORS.GRAY_7};
+  background-color: ${({ theme }) => theme.COLORS.GRAY_7};  
 `;
 
 export const Label = styled.Text`
@@ -52,7 +53,6 @@ export const BoxButton = styled.View`
   width: 100%;
   height: auto;
 
-  position: absolute;
-  top: 97%;
+  margin-top: 140px;
   align-self: center;
 `;

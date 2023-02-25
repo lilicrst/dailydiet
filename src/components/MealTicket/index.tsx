@@ -14,7 +14,7 @@ export function MealTicket({ hour, meal, status, ...rest}: Props){
         {hour}  
       </Hour>
       <Divider />
-      <Meal>
+      <Meal numberOfLines={1} >
         {meal}
       </Meal>
       <Status 

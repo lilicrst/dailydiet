@@ -64,7 +64,7 @@ export const BoxButton = styled.View`
   height: auto;
 
   position: absolute;
-  top: 85%;
+  top: 80%;
   align-self: center;
 `;
 

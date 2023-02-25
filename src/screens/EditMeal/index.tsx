@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Alert } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { AppError } from '@utils/AppError';
@@ -125,67 +125,69 @@ export function EditMeal() {
     <Container>
       <BackButton />
       <HeaderTitle title="Editar refeição" />
+
       <SlidingScreen>
-        <Label>Nome</Label>
-        <Input
-          type='NAME'
-          onChangeText={setNameInput}
-          value={nameInput}
-        />
+        <ScrollView showsVerticalScrollIndicator={false} >
+          <Label>Nome</Label>
+          <Input
+            type='NAME'
+            onChangeText={setNameInput}
+            value={nameInput}
+          />
 
-        <Label>Descrição</Label>
-        <Input
-          type='DESCRIPTION'
-          multiline={true}
-          textAlignVertical={'top'}
-          onChangeText={setDescriptionInput}
-          value={descriptionInput}
-        />
+          <Label>Descrição</Label>
+          <Input
+            type='DESCRIPTION'
+            multiline={true}
+            textAlignVertical={'top'}
+            onChangeText={setDescriptionInput}
+            value={descriptionInput}
+          />
 
-        <Column>
-          <Binded>
-            <Label>Data</Label>
-            <Input
-              type='DATEHOUR'
-              onChangeText={setDateInput}
-              value={dateInput}
+          <Column>
+            <Binded>
+              <Label>Data</Label>
+              <Input
+                type='DATEHOUR'
+                onChangeText={setDateInput}
+                value={dateInput}
+              />
+            </Binded>
+            <Binded>
+              <Label>Hora</Label>
+              <Input
+                type='DATEHOUR'
+                onChangeText={setHourInput}
+                value={hourInput}
+              />
+            </Binded>
+          </Column>
+
+          <Label>Está dentro da dieta?</Label>
+
+          <Column>
+            <MiniButton
+              type="YES"
+              title="Sim"
+              isActive={miniButtonChecked === 'yes' ? true : false}
+              onPress={() => setMiniButtonChecked('yes')}
             />
-          </Binded>
-          <Binded>
-            <Label>Hora</Label>
-            <Input
-              type='DATEHOUR'
-              onChangeText={setHourInput}
-              value={hourInput}
+            <MiniButton
+              type="NO"
+              title="Não"
+              isActive={miniButtonChecked === 'no' ? true : false}
+              onPress={() => setMiniButtonChecked('no')}
             />
-          </Binded>
-        </Column>
+          </Column>
 
-        <Label>Está dentro da dieta?</Label>
+          <BoxButton>
 
-        <Column>
-          <MiniButton
-            type="YES"
-            title="Sim"
-            isActive={miniButtonChecked === 'yes' ? true : false}
-            onPress={() => setMiniButtonChecked('yes')}
-          />
-          <MiniButton
-            type="NO"
-            title="Não"
-            isActive={miniButtonChecked === 'no' ? true : false}
-            onPress={() => setMiniButtonChecked('no')}
-          />
-        </Column>
-
-        <BoxButton>
-          
-          <Button
-            title="Salvar alterações"
-            onPress={handleEditMeal}
-          />
-        </BoxButton>
-
+            <Button
+              title="Salvar alterações"
+              onPress={handleEditMeal}
+            />
+          </BoxButton>
+        </ScrollView>
       </SlidingScreen>
     </Container>
   );

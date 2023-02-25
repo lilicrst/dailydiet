@@ -34,6 +34,7 @@ export const Hour = styled.Text`
 
 export const Meal = styled.Text`
   flex: 1;
+  margin-right: 10px;
   ${({ theme }) => css`
     font-size: ${theme.FONT_SIZE.BODY_M}px;
     font-family: ${theme.FONT_FAMILY.REGULAR};
