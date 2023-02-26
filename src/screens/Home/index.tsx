@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { daysGetAll } from '@storage/Days/daysGetAll';
 import { mealGetByDay } from '@storage/Meal/mealGetByDay';
+import { mealGetStatistics } from '@storage/Meal/mealGetStatistics';
 
 import { Header } from '@components/Header';
 import { PercentageChart } from '@components/PercentageChart';
@@ -32,6 +33,7 @@ export function Home() {
   const navigation = useNavigation();
 
   function handleOpenStatistics() {
+    mealGetStatistics();
     navigation.navigate('statistics');
   }
 
