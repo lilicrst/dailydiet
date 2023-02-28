@@ -24,8 +24,16 @@ export async function mealGetStatistics() {
         }
       }      
     }
-    
-    console.log('Total de refeições: ' + allMeals + ' | Dentro da dieta: ' + goodMeals + ' | fora da dieta: ' + badMeals);
+
+    const statistics = {
+      all: allMeals,
+      good:goodMeals,
+      bad: badMeals,
+      goodPercentage: (100 * goodMeals) / allMeals,
+    }
+
+    return statistics;
+  
   } catch (error) {
     throw error
   }

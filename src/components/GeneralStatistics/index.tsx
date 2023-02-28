@@ -1,10 +1,11 @@
 import { Container, Percentage, Subtitle } from "./styles";
 
 type Props = {
-  percentage: string;
+  percentage: number | string;
 }
 
 export function GeneralStatistics({percentage}: Props) {
+
   return (
     <Container>            
         <Percentage>
