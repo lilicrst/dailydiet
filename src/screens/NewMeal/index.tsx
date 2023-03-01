@@ -71,8 +71,7 @@ export function NewMeal() {
       <BackButton />
       <HeaderTitle title="Nova refeição" />
 
-      <SlidingScreen>
-        <ScrollView showsVerticalScrollIndicator={false} >
+      <SlidingScreen>        
           <Label>Nome</Label>
           <Input
             type='NAME'
@@ -130,8 +129,7 @@ export function NewMeal() {
               title="Cadastrar refeição"
               onPress={handleSaveMeal}
             />
-          </BoxButton>
-        </ScrollView>
+          </BoxButton>        
       </SlidingScreen>
     </Container>
   );

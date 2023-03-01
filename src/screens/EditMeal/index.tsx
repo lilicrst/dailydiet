@@ -126,8 +126,7 @@ export function EditMeal() {
       <BackButton />
       <HeaderTitle title="Editar refeição" />
 
-      <SlidingScreen>
-        <ScrollView showsVerticalScrollIndicator={false} >
+      <SlidingScreen>        
           <Label>Nome</Label>
           <Input
             type='NAME'
@@ -186,8 +185,7 @@ export function EditMeal() {
               title="Salvar alterações"
               onPress={handleEditMeal}
             />
-          </BoxButton>
-        </ScrollView>
+          </BoxButton>        
       </SlidingScreen>
     </Container>
   );
