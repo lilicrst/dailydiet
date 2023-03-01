@@ -8,6 +8,7 @@ export async function mealGetStatistics() {
     let allMeals = 0;
     let goodMeals = 0;
     let badMeals = 0;
+    let goodMealsPecent = 0;
 
     for (let i = 0; i < storedDays.length; i++) {
       const day = storedDays[i];
@@ -25,11 +26,14 @@ export async function mealGetStatistics() {
       }      
     }
 
+    goodMealsPecent = (100 * goodMeals) / allMeals;
+
     const statistics = {
       all: allMeals,
       good:goodMeals,
       bad: badMeals,
-      goodPercentage: (100 * goodMeals) / allMeals,
+      goodPercentage: goodMealsPecent,
+      status: goodMealsPecent > 60 ? true : false,
     }
 
     return statistics;

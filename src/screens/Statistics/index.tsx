@@ -21,10 +21,14 @@ export function Statistics() {
 
   useEffect(() => {
     getStatistics();
+    console.log(statistics?.status)
   }, [])
 
+  // TODO
+  // nã tá pegando o status direito.
+
   return (
-    <Container>
+    <Container isInsideTheDiet={statistics?.status} >
       <BackButton />
       <GeneralStatistics percentage={statistics ? statistics.goodPercentage.toFixed(2) + '%' : 0 + '%'} />
       <InfoChart>

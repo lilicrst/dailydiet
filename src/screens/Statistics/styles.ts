@@ -1,9 +1,15 @@
 import { SafeAreaView } from 'react-native-safe-area-context';
 import styled, { css } from "styled-components/native";
 
-export const Container = styled(SafeAreaView)`
+export type StatusTypeColorProps = boolean;
+
+type Props = {
+  isInsideTheDiet?: StatusTypeColorProps;
+}
+
+export const Container = styled(SafeAreaView) <Props> `
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
+  background-color: ${({ theme, isInsideTheDiet }) => isInsideTheDiet === true ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
 
   align-items: center;
 

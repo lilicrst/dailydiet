@@ -1,6 +1,5 @@
-import styled, { css, DefaultTheme } from "styled-components/native";
-import { ThemeAttributeBackgroundPropType, TouchableOpacity } from "react-native";
-import theme from "src/theme";
+import styled, { css } from "styled-components/native";
+import { TouchableOpacity } from "react-native";
 
 export type ButtonTypeStyleProps = 'YES' | 'NO';
 
@@ -59,5 +58,3 @@ export const Icon = styled.View <Props> `
 
   background-color: ${({ theme, type }) => type === 'YES' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
 `;
-
-//https://app.rocketseat.com.br/h/forum/react-native/421811c8-910e-4a8d-9c5d-fd49990039e1

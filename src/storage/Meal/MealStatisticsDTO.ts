@@ -3,4 +3,5 @@ export type MealStatisticsDTO = {
   good:number;
   bad: number;
   goodPercentage: number;
+  status: boolean;
 }
