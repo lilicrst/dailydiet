@@ -13,7 +13,7 @@ export const Container = styled(SafeAreaView) <Props> `
 
   align-items: center;
 
-  padding-top: 72px;
+  padding-top: 40px;
 `;
 
 export const InfoChart = styled.View`

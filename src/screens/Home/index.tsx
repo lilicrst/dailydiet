@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Alert, SectionList } from 'react-native';
+import { SectionList } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -42,7 +42,7 @@ export function Home() {
   }
 
   function handleOpenMeal(key: string, day: string) {
-      navigation.navigate('meal', { key, day });  
+    navigation.navigate('meal', { key, day });
   }
 
   async function fetchListsOfMeals() {
@@ -104,10 +104,12 @@ export function Home() {
           <DateList>{title}</DateList>
         )}
         ListEmptyComponent={() => (
-          <Text>
-            Não há refeições registradas ainda. {'\n'}
-            Comece a registrar agora.
-          </Text>
+          <DateList>
+            <Text>
+              Não há refeições registradas ainda. {'\n'}
+              Comece a registrar agora.
+            </Text>
+          </DateList>
         )}
       />
 
